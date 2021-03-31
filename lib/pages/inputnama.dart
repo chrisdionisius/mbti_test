@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'kuisioner.dart';
 
 class InputNama extends StatelessWidget {
+  final namaController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,6 +27,7 @@ class InputNama extends StatelessWidget {
               alignment: Alignment.center,
               width: MediaQuery.of(context).size.width * 0.65,
               child: TextField(
+                controller: namaController,
                 style: TextStyle(color: Colors.white),
                 textAlign: TextAlign.center,
               ),
@@ -44,7 +46,9 @@ class InputNama extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Kuisioner(),
+                      builder: (context) => Kuisioner(
+                        nama: namaController.text,
+                      ),
                     ),
                   );
                 },

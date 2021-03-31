@@ -3,12 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:mbti_test/Judul.dart';
 import 'package:mbti_test/Kalkulasi.dart';
 import 'package:mbti_test/ListPertanyaan.dart';
+import 'package:mbti_test/dbhelper.dart';
 import 'package:mbti_test/models/Kepribadian.dart';
+import 'package:mbti_test/models/Partisipan.dart';
 import 'package:mbti_test/pages/analisis.dart';
 
 void main() => runApp(Kuisioner());
 
 class Kuisioner extends StatefulWidget {
+  final nama;
+  const Kuisioner({Key key, this.nama}) : super(key: key);
+
   @override
   _KuisionerState createState() => _KuisionerState();
 }
@@ -136,8 +141,10 @@ class _KuisionerState extends State<Kuisioner> {
     setState(() {});
   }
 
+  DbHelper dbHelper = DbHelper();
   var analisis;
-  void display() {
+
+  Future<void> display() async {
     analisis = '';
     for (int i = 0; i < hasil.length; i++) analisis += hasil[i];
 
@@ -151,6 +158,9 @@ class _KuisionerState extends State<Kuisioner> {
             gambar: _alignment[i][4]);
       }
     }
+    var partisipan = Partisipan(widget.nama, kepribadian.tipe);
+    int result = await dbHelper.insert(partisipan);
+
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -173,7 +183,7 @@ class _KuisionerState extends State<Kuisioner> {
           backgroundColor: Colors.amber,
         ),
         body: ListView(children: [
-          Judul(),
+          Judul(nama: widget.nama),
           ListPertanyaan(score: _score, hasil: hasil, stateMethod: stateMethod),
           Kalkulasi(display: display),
         ]),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mbti_test/pages/rekap.dart';
 import 'kuisioner.dart';
 import 'inputnama.dart';
 
@@ -66,7 +67,7 @@ class Home extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Kuisioner(),
+                        builder: (context) => Rekap(),
                       ),
                     );
                   },

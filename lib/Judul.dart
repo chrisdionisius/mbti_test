@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Judul extends StatelessWidget {
+  final nama;
   const Judul({
     Key key,
+    this.nama,
   }) : super(key: key);
 
   @override
@@ -11,7 +13,7 @@ class Judul extends StatelessWidget {
       margin: EdgeInsets.all(20),
       padding: EdgeInsets.all(5),
       child: Text(
-        'Cek Tipe Kepribadian Kamu',
+        'Halo ' + nama,
         style: TextStyle(fontSize: 20, color: Colors.white),
         textAlign: TextAlign.center,
       ),

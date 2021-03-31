@@ -22,14 +22,14 @@ class Analisis extends StatelessWidget {
         body: Column(
           children: [
             Text(
-              kepribadian.tipe,
+              'Tipe kepribadianmu : ' + kepribadian.tipe,
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
             Text(
-              kepribadian.nama,
+              'Sang ' + kepribadian.nama,
               style: TextStyle(fontSize: 25, color: Colors.white),
             ),
             Container(

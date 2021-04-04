@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mbti_test/pages/listKepribadian.dart';
 import 'package:mbti_test/pages/rekap.dart';
-import 'kuisioner.dart';
 import 'inputnama.dart';
 
 class Home extends StatelessWidget {
@@ -59,6 +59,34 @@ class Home extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     primary: Colors.amber,
                     padding: EdgeInsets.symmetric(vertical: 15),
+                    shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(15.0),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ListKepribadian(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'List Kepribadian',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+            ),
+            Divider(),
+            Divider(),
+            Divider(),
+            Container(
+              child: SizedBox(
+                width: 150,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.amber,
                     shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(15.0),
                     ),

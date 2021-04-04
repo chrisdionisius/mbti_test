@@ -3,6 +3,8 @@ import 'package:mbti_test/pages/analisis.dart';
 import 'package:mbti_test/pages/home.dart';
 
 import 'package:flutter/material.dart';
+import 'package:mbti_test/pages/listKepribadian.dart';
+import 'package:mbti_test/pages/rekap.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,6 +19,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => Home(),
         '/kuisioner': (context) => Kuisioner(),
         '/analisis': (context) => Analisis(),
+        '/listKepribadian': (context) => ListKepribadian(),
+        '/rekap': (context) => Rekap(),
       },
     );
   }

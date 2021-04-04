@@ -4,6 +4,8 @@ import 'package:mbti_test/dbhelper.dart';
 import 'package:mbti_test/models/Kepribadian.dart';
 import 'package:sqflite/sqflite.dart';
 
+import 'analisis.dart';
+
 class ListKepribadian extends StatefulWidget {
   @override
   _ListKepribadianState createState() => _ListKepribadianState();
@@ -50,7 +52,15 @@ class _ListKepribadianState extends State<ListKepribadian> {
             ),
             subtitle: Text(this.kepribadianList[index].nama.toString()),
             trailing: null,
-            onTap: null,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      Analisis(kepribadian: kepribadianList[index]),
+                ),
+              );
+            },
           ),
         );
       },

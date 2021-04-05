@@ -36,6 +36,7 @@ class _ListKepribadianState extends State<ListKepribadian> {
   }
 
   ListView createListView() {
+    //builder untuk generate card sebanyak record pada table kepribadian
     return ListView.builder(
       itemCount: count,
       itemBuilder: (BuildContext context, int index) {
@@ -56,6 +57,7 @@ class _ListKepribadianState extends State<ListKepribadian> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
+                  //menuju pages analisis untuk melihat keterangan dari tipe kepribadian yang dipilih
                   builder: (context) =>
                       Analisis(kepribadian: kepribadianList[index]),
                 ),
@@ -67,6 +69,7 @@ class _ListKepribadianState extends State<ListKepribadian> {
     );
   }
 
+  //melakukan update tampilan berdasar kondisi db saat ini
   void updateListView() {
     final Future<Database> dbFuture = dbHelper.initDb();
     dbFuture.then((database) {

@@ -24,6 +24,7 @@ class Home extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 30),
               ),
             ),
+            //button untuk memulai test
             Container(
               margin: EdgeInsets.only(top: 10),
               child: SizedBox(
@@ -40,6 +41,7 @@ class Home extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
+                        //menujy page InputNama
                         builder: (context) => InputNama(),
                       ),
                     );
@@ -52,6 +54,7 @@ class Home extends StatelessWidget {
               ),
             ),
             Divider(),
+            //button untuk melihat daftar kepribadian
             Container(
               child: SizedBox(
                 width: 300,
@@ -67,6 +70,7 @@ class Home extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
+                        //menuju page ListKepribadian
                         builder: (context) => ListKepribadian(),
                       ),
                     );
@@ -81,6 +85,7 @@ class Home extends StatelessWidget {
             Divider(),
             Divider(),
             Divider(),
+            //button untuk melihat daftar inputan
             Container(
               child: SizedBox(
                 width: 150,
@@ -95,6 +100,7 @@ class Home extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
+                        //menuju page rekap
                         builder: (context) => Rekap(),
                       ),
                     );

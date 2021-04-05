@@ -32,6 +32,7 @@ class InputNama extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
+            //button untuk melanjutkan ke halaman kuisioner
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.65,
               child: ElevatedButton(
@@ -46,6 +47,7 @@ class InputNama extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
+                      //menuju page Kuisioner dengan param nama user
                       builder: (context) => Kuisioner(
                         nama: namaController.text,
                       ),

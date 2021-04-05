@@ -23,6 +23,7 @@ class DbHelper {
 
   //buat tabel baru dengan nama item
   void _createDb(Database db, int version) async {
+    //create table partisipan
     await db.execute('''
       CREATE TABLE partisipan (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -30,6 +31,7 @@ class DbHelper {
       kepribadian TEXT
       )
     ''');
+    //create table kepribadian
     await db.execute('''
     CREATE TABLE kepribadian (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -39,6 +41,7 @@ class DbHelper {
       profesi TEXT,
       gambar TEXT)
       ''');
+    //pre-populate table kepribadian
     await db.rawInsert(
         '''INSERT INTO kepribadian (tipe,nama,deskripsi,profesi,gambar) VALUES
           (
@@ -154,10 +157,10 @@ class DbHelper {
             "https://campuspedia.id/news/wp-content/uploads/2020/02/Screenshot_2020-02-09-09-36-54-404_com.android.chrome-300x300.png"
           )
           ''');
-    print('table 2 go');
+    print('table 2 masuk bos');
   }
 
-  //select databases
+  //select table partisipan
   Future<List<Map<String, dynamic>>> select() async {
     Database db = await this.initDb();
     print('tampilin data');
@@ -165,6 +168,7 @@ class DbHelper {
     return mapList;
   }
 
+  //select table kepribadian
   Future<List<Map<String, dynamic>>> selectKepribadian() async {
     Database db = await this.initDb();
     print('tampilin data');
@@ -172,7 +176,7 @@ class DbHelper {
     return mapList;
   }
 
-  //create databases
+  //insert menuju table partisipan
   Future<int> insert(Partisipan object) async {
     Database db = await this.initDb();
     int count = await db.insert('partisipan', object.toMap());
@@ -180,6 +184,7 @@ class DbHelper {
     return count;
   }
 
+  //insert menuju table kepribadian
   Future<Kepribadian> cari(String tipe) async {
     Database db = await this.initDb();
     Kepribadian kep;
@@ -189,21 +194,22 @@ class DbHelper {
     return kep;
   }
 
-  //update databases
-  Future<int> update(Partisipan object) async {
-    Database db = await this.initDb();
-    int count = await db.update('partisipan', object.toMap(),
-        where: 'id=?', whereArgs: [object.id]);
-    return count;
-  }
+  // update table partisipan
+  // Future<int> update(Partisipan object) async {
+  //   Database db = await this.initDb();
+  //   int count = await db.update('partisipan', object.toMap(),
+  //       where: 'id=?', whereArgs: [object.id]);
+  //   return count;
+  // }
 
-  //delete databases
+  //delete record pada table partisipan
   Future<int> delete(int id) async {
     Database db = await this.initDb();
     int count = await db.delete('partisipan', where: 'id=?', whereArgs: [id]);
     return count;
   }
 
+  //konversi dari bentuk string menuju bentuk map object pada table partisipan
   Future<List<Partisipan>> getItemList() async {
     var itemMapList = await select();
     int count = itemMapList.length;
@@ -214,6 +220,7 @@ class DbHelper {
     return itemList;
   }
 
+  //konversi dari bentuk string menuju bentuk map object pada table kepribadian
   Future<List<Kepribadian>> getKepribadianList() async {
     var itemMapList = await selectKepribadian();
     int count = itemMapList.length;

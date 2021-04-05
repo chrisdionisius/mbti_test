@@ -51,7 +51,6 @@ class _RekapState extends State<Rekap> {
             trailing: GestureDetector(
               child: Icon(Icons.delete),
               onTap: () async {
-                //TODO 3 Panggil Fungsi untuk Delete dari DB berdasarkan Item
                 int result =
                     await dbHelper.delete(this.partisipanList[index].id);
                 if (result > 0) updateListView();
@@ -67,7 +66,6 @@ class _RekapState extends State<Rekap> {
   void updateListView() {
     final Future<Database> dbFuture = dbHelper.initDb();
     dbFuture.then((database) {
-      //TODO 1 Select data dari DB
       Future<List<Partisipan>> partisipanListFuture = dbHelper.getItemList();
       partisipanListFuture.then((partisipanList) {
         setState(() {

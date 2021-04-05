@@ -18,28 +18,37 @@ class Kuisioner extends StatefulWidget {
 }
 
 class _KuisionerState extends State<Kuisioner> {
+  //variable untuk mengelompokkan radio button berdasarkan pertanyaan
   List<String> _score = List<String>();
+  //var untuk menampung object dari hasil analisis kepribadian
   var kepribadian;
+  //var untuk menampung tipe sub-kepribadian berdasarkan input sementara
   var hasil = List(4);
+  //method untuk melakukan  set state / refresh
   void stateMethod() {
     setState(() {});
   }
 
+  //instansiasi obj dbHelper
   DbHelper dbHelper = DbHelper();
+
   var analisis;
 
   Future<void> display() async {
     analisis = '';
+    //iterasi untuk menginputkan sub-kepribadian menjadi suatu jenis kepribadian
     for (int i = 0; i < hasil.length; i++) analisis += hasil[i];
-
+    //melalukan select untuk mencari tipe kepribadian yang sesuai pada table di db
     kepribadian = await dbHelper.cari(analisis);
-
+    //instansiasi object partisipan berdasar tipe kepribadian dan nama user
     var partisipan = Partisipan(widget.nama, kepribadian.tipe);
+    //proses input data menuju database
     await dbHelper.insert(partisipan);
 
     Navigator.push(
       context,
       MaterialPageRoute(
+        //menuju laman analisis untuk membaca keterangan kepribadian
         builder: (context) => Analisis(kepribadian: kepribadian),
       ),
     );

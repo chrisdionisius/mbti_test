@@ -43,11 +43,11 @@ class _RekapState extends State<Rekap> {
           child: ListTile(
             leading: CircleAvatar(
                 backgroundColor: const Color(0xff252c48),
-                child: Icon(Icons.topic_outlined)),
+                child: Text(this.partisipanList[index].id.toString())),
             title: Text(
               this.partisipanList[index].nama,
             ),
-            subtitle: Text(this.partisipanList[index].kepribadian.toString()),
+            subtitle: Text(this.partisipanList[index].kepribadian),
             trailing: GestureDetector(
               child: Icon(Icons.delete),
               onTap: () async {

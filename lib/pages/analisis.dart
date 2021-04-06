@@ -34,6 +34,9 @@ class Analisis extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                border: Border.all(width: 5, color: Colors.white),
+              ),
               child: Image.network(kepribadian.gambar),
             ),
             Text(kepribadian.deskripsi,

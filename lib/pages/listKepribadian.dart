@@ -49,7 +49,9 @@ class _ListKepribadianState extends State<ListKepribadian> {
               child: Image.network(kepribadianList[index].gambar),
             ),
             title: Text(
-              this.kepribadianList[index].tipe,
+              this.kepribadianList[index].id.toString() +
+                  ' - ' +
+                  this.kepribadianList[index].tipe,
             ),
             subtitle: Text(this.kepribadianList[index].nama.toString()),
             trailing: null,
